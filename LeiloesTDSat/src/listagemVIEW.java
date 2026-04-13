@@ -205,6 +205,7 @@ public class listagemVIEW extends javax.swing.JFrame {
         try {
             ProdutosDAO produtosdao = new ProdutosDAO();
             
+            
             DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
             model.setNumRows(0);
             
@@ -218,7 +219,7 @@ public class listagemVIEW extends javax.swing.JFrame {
                     listagem.get(i).getStatus()
                 });
             }
-        } catch (Exception e) {
+        } catch (Exception e) { System.out.println("Erro ao listar: " + e.getMessage());
         }
     
     }
