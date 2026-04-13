@@ -162,6 +162,17 @@ public class cadastroVIEW extends javax.swing.JFrame {
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        // Comentário para forçar o commit de salvamento
+        
+        
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
