@@ -74,4 +74,34 @@ public class ProdutosDAO {
         } catch (SQLException erro) {}
         return listagem;
     }
+    
+    public ArrayList<ProdutosDTO> listarVendas() {
+        ArrayList<ProdutosDTO> listagem = new ArrayList<>();
+        
+        // Conecta com o banco (ajuste se a sua classe de conexão for diferente)
+        conn = new conectaDAO().connectDB(); 
+        
+        try {
+            // A mágica acontece aqui: O SELECT busca apenas quem tem o status "Vendido"
+            String sql = "SELECT * FROM produtos WHERE status = 'Vendido'";
+            
+            prep = conn.prepareStatement(sql);
+            resultset = prep.executeQuery();
+            
+            while(resultset.next()){
+                ProdutosDTO produto = new ProdutosDTO();
+                produto.setId(resultset.getInt("id"));
+                produto.setNome(resultset.getString("nome"));
+                produto.setValor(resultset.getInt("valor")); // Se o seu valor for Double, use getDouble("valor")
+                produto.setStatus(resultset.getString("status"));
+                
+                listagem.add(produto);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao listar vendas: " + e.getMessage());
+        }
+        
+        return listagem;
+    }
 }
